@@ -1,6 +1,9 @@
 import React from 'react';
 import '../App.css'; 
 import { Link } from 'react-router-dom';
+import HambergerBar from '../components/HambergerBar'
+import Fliter from '../components/Fliter'
+
 
 const Home = () => {
     const data = [
@@ -10,17 +13,19 @@ const Home = () => {
     ];
     
   return (
+    <>
+            <HambergerBar/>
     <div className="main-container"> {/* เพิ่ม class หลักเพื่อจัดการพื้นที่ */}
-        <div className=''>
-            
-
-        </div>
         <div className="header-section">
-            <h1>New </h1>
+            <h1>Dashboard </h1>
             <button className='button-a'>Add New</button>
         </div>
+            <div className='glass-panel2'>
+                
+            </div>
 
         <div className="glass-panel"> 
+            <Fliter/>
             <table className="home-table">
                 <thead>
                     <tr> 
@@ -61,6 +66,7 @@ const Home = () => {
             <button className='pagination-arrow'>→</button>
         </div>
     </div>
+    </>
   );
 };
 

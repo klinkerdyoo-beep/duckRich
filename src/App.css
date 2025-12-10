@@ -12,7 +12,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     /* ใช้พื้นหลังเคลื่อนไหวเดิม */
-    background: linear-gradient(-45deg, #feffb1, #a9c6ff, #feffb1, #a9c6ff);
+    background: linear-gradient(-45deg, #74a0f8, #a9c6ff, #74a0f8, #a9c6ff);
     background-size: 400% 400%; 
     animation: color-shift 15s ease infinite; 
 }
@@ -60,16 +60,46 @@ body {
     background: #e69800;
 }
 
-.glass-panel {
-
+.glass-panel2{
+    
       /* ขนาดและระยะห่าง */
-      width: 500px;
+      width: 800px;
+      height: 100px;
       max-width: 1000px;
       padding: 40px;
+      margin-bottom: 20px;
       border-radius: 20px;
       display: flex;
       justify-content: center;
 
+      background: rgba(255, 255, 255, 0.759);
+      /* 2. เอฟเฟกต์เบลอพื้นหลัง */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px); /* สำหรับ Safari */
+
+      /* 3. เส้นขอบใสๆ */
+      border: 1px solid rgba(255, 255, 255, 0.3);
+
+      /* 4. เงาอ่อนๆ ให้ดูมีมิติ */
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+
+      /* 5. ข้อความ */
+      color: #333; /* สีข้อความเข้มขึ้นเพื่อให้อ่านง่าย */
+      text-align: center;
+}
+
+.glass-panel {
+
+      /* ขนาดและระยะห่าง */
+      width: 800px;
+      height: 400px;
+      max-width: 1000px;
+      padding-left: 40px;
+      padding-right: 40px;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column; 
       background: rgba(255, 255, 255, 0.759);
 
       /* 2. เอฟเฟกต์เบลอพื้นหลัง */
@@ -138,7 +168,7 @@ body {
 /* 7. สไตล์เซลล์ย่อย (TD) */
 /* ---------------------------------- */
 .home-table td {
-    font-size: 0.7em;
+    font-size: 15px;
     border: none; /* **ลบเส้นขอบเซลล์ออกทั้งหมด** */
     padding: 10px 8px; 
     text-align: left; 

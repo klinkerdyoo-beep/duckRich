@@ -1,0 +1,28 @@
+.main{
+    background-color: rgb(255, 255, 255);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+}
+.filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.search{
+    color: white;
+    background-color: rgb(95, 95, 95);
+    width: 100px;
+    max-height: 20px;
+    display: flex;
+    text-align: center;   
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+}
