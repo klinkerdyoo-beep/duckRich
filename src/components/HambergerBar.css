@@ -5,6 +5,13 @@
     font-family: "Quicksand", sans-serif !important;
 }
 
+a {
+    text-decoration: none !important;
+    
+}
+.sidebar a {
+   display: inline-block;
+}
 /* Hamburger icon */
 .hamburger {
   position: fixed;
@@ -21,7 +28,7 @@
 }
 
 .hamburger.open {
-  left: 250px; /* <<< อยู่ชิด sidebar */
+  left: 320px; /* <<< อยู่ชิด sidebar */
 }
 
 .hamburger span {
@@ -45,20 +52,22 @@
   transform: translateY(-9px) rotate(-45deg);
 }
 .sidebar{    
-        font-family: "Quicksand", sans-serif !important;
+    font-family: "Quicksand", sans-serif !important;
     background-color: rgba(255, 255, 255, 0.683);
     position: fixed;
     top: 0;
-    left: -240px;         /* ซ่อน Sidebar */
+    left: -300px;         /* ซ่อน Sidebar */
     width: 240px;
-    height: 100vh;
-
+    height:100vh;
+    
     display: flex;
-    flex-direction: column;  
-    align-items: center;   
+    flex-direction: column;   
+    align-items: center;
+    gap: 10px;
     
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-    padding-top: 70px;
+    padding: 10px;
+    padding-top: 70px;;
     transition: 0.5s ease;
     z-index: 150;
 }   
@@ -66,7 +75,6 @@
 .sidebar.show {
   left: 0;
 }
-
 
 .b1 img{
     width: 30px;
@@ -76,11 +84,12 @@
     flex-shrink: 0;    /* <<< ไม่ให้โดนบีบโดย flex */
 }
 .b1 {
+    font-family: "Quicksand", sans-serif !important;
     display: flex;
     flex-direction: row;
-    width: auto;
-    gap: 5px;
-    padding: 8px 16px;
+    width: 200px;
+    gap: 20px;
+    padding: 2px 15px;
     border-radius: 20px;
     color: black;
     background: none;
@@ -89,4 +98,54 @@
 .b1:hover {
     background: linear-gradient(-90deg, #0068FF, #3E8FFF, #0068FF);
     color: white;
+}
+
+.b1.active {
+    background: linear-gradient(-90deg, #0068FF, #3E8FFF, #0068FF);
+    color: white;
+}
+
+.b1 h2{
+  font-size: 20px;
+}
+
+.sub-menu{
+  display: flex ;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.d-sub{
+  display: flex ;
+  justify-content: left;
+  align-items: center;
+}
+
+.b2 {
+    font-family: "Quicksand", sans-serif !important;
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    width: fit-content;
+    padding: 0px 20px;
+    border-radius: 40px;
+    color: black;
+    background: linear-gradient(-90deg, #92beff9b, rgba(179, 205, 243, 0.403), #92beff9b);
+    border: none; 
+}
+
+.b2:hover, .cer:hover, .b2.active{
+   background: linear-gradient(-90deg, #438af5, rgb(95, 159, 255), #438af5);     
+}
+
+/* .cer{
+  width: 30px;
+  height: 30px;
+  background-color: #92bdff ;
+  border-radius: 40px;
+} */
+
+.logo {
+  width: 150px;
 }
