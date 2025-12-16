@@ -15,9 +15,10 @@ const CreateDailyRecord = () => {
     const category = [
         { id: 1, name:"food", color:"#19A598"},
         { id: 2, name:"shop", color:"#FE9427"},
-]
+    ]
     const [page, setPage] = useState("CreateDailyRecord");
     const [type, setType]  = useState("ex")
+    const [categories, setCategories] = useState(1);
   return (
     <>
         <HambergerBar page={page} setPage={setPage}/> 
@@ -42,10 +43,10 @@ const CreateDailyRecord = () => {
                         <h2>Category</h2>
                         <div style={{display: "flex", gap:"20px"}}>
                             {category.map((row, index) => (
-                            <div key={row.id}  style={{backgroundColor: row.color}} className='category-panel'>
-                                {row.name}
-                            </div>
-                        ))}
+                                <div key={row.id} onClick={() => {setCategories(row.id)}}  style={{backgroundColor: row.color}} className={` category-panel ${categories === row.id ? "active" : ""}`}>
+                                    {row.name}
+                                </div>
+                            ))}
                         </div>
                     </div>
                         <div className='for-panel3'>

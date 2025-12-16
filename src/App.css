@@ -311,9 +311,17 @@ body.sidebar-open .content {
     align-items: center; 
     justify-content: center;
     color: white;
+
+    box-sizing: border-box; 
+    border: 2px solid transparent; 
 }
 
 .category-panel:hover {
+    border: 2px solid rgba(0, 0, 0, 0.384); 
+    box-shadow: none; 
+}
+
+.category-panel.active {
     border: 2px solid black; 
     box-shadow: none; 
 }

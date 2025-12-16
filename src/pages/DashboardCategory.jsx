@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css'; 
-import './ManageCategory.css';
+import './DashboardCategory.css';
 import { Link } from 'react-router-dom';
 import HambergerBar from '../components/HambergerBar';
 import Fliter from '../components/Fliter';

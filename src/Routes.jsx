@@ -4,7 +4,7 @@ import  Home  from "./pages/Home";
 import CreateDailyRecord from "./pages/CreateDailyRecord";
 import EditRecord from "./pages/EditRecord";
 import DailyRecord from "./pages/DailyRecord";
-import ManageCategory from "./pages/ManageCategory";
+import DashboardCategory from "./pages/DashboardCategory";
 
 export const AppRoutes  = () => {
     return(
@@ -14,7 +14,7 @@ export const AppRoutes  = () => {
                 <Route path="/createDailyRecord" element={<CreateDailyRecord />} />
                 <Route path="/edit/:id" element={<EditRecord />} />
                 <Route path="/dailyRecord" element={<DailyRecord />} />
-                <Route path="/manageCategory" element={<ManageCategory />} />
+                <Route path="/dashboardCategory" element={<DashboardCategory />} />
             </Routes>
         </Router>   
     )

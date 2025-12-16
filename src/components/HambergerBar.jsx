@@ -56,30 +56,30 @@ function HambergerBar({page, setPage}) {
                   <h2>Add <br /> New Record</h2>
                </button>
              </Link>
-             <Link to="/manageCategory" onClick={() => setPage("ManageCategory")}>
-               <button className={`b1 ${page === "ManageCategory" ? "active" : ""}`}
+             <Link to="/dashboardCategory" onClick={() => setPage("DashboardCategory")}>
+               <button className={`b1 ${page === "DashboardCategory" ? "active" : ""}`}
                   onMouseEnter={() => setHover("c") }
                   onMouseLeave={() => setHover(null)}>
-                     {hover === "c" || page === "ManageCategory" ? <img src={IconC}/> : <img src={IconCBlack}/>}
-                  <h2> Manage<br />Categories</h2>
+                     {hover === "c" || page === "DashboardCategory" ? <img src={IconC}/> : <img src={IconCBlack}/>}
+                  <h2> Categories</h2>
                </button>             
              </Link>
-                  {page === "ManageCategory" && (
+                  {page === "DashboardCategory" && (
                      <div className="sub-menu">
-                        <Link to="/manageCategory/add">
+                        <Link to="/dashboardCategory">
                         <div className='d-sub'>
                            {/* <div className='cer'></div> */}
-                           <button className={`b2 ${page === "ManageCategory" ? "active" : ""}`}>
+                           <button className={`b2 ${page === "DashboardCategory" ? "active" : ""}`}>
                               <h3>Dashboard</h3>
                            </button>
                         </div>
 
                         </Link>
 
-                        <Link to="/manageCategory/edit">
+                        <Link to="/manageCategory">
                         <div className='d-sub'>
                            {/* <div className='cer'></div> */}
-                           <button className="b2">
+                           <button className={`b2 ${page === "ManageCategory" ? "active" : ""}`}>
                               <h3>Manage Category</h3>
                            </button>
                         </div>
