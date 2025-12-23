@@ -7,8 +7,8 @@ import Fliter from '../components/Fliter';
 import PieChart from '../components/PieChart';
 import BarChart from '../components/BarChart';
 
-const ManageCategory = () => {
-    const [page, setPage] = useState("ManageCategory");
+const DashboardCategory = () => {
+    const [page, setPage] = useState("DashboardCategory");
         const category = [
         { id: 1, name:"food", color:"#19A598"},
         { id: 2, name:"shop", color:"#FE9427"},
@@ -18,7 +18,7 @@ const ManageCategory = () => {
         <HambergerBar page={page} setPage={setPage}/> 
         <div className={`content`}>
             <div className='header-section'>
-                <h1> Manage Category</h1>
+                <h1> Dashboard</h1>
             </div>
             <div className='glass-panel2' style={{display:'flex', flexDirection: "column" }}>
                 <p>All Category</p>
@@ -50,4 +50,4 @@ const ManageCategory = () => {
 
 }
 
-export default ManageCategory;
+export default DashboardCategory;

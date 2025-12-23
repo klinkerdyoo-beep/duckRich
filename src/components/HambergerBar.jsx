@@ -57,14 +57,14 @@ function HambergerBar({page, setPage}) {
                </button>
              </Link>
              <Link to="/dashboardCategory" onClick={() => setPage("DashboardCategory")}>
-               <button className={`b1 ${page === "DashboardCategory" ? "active" : ""}`}
+               <button className={`b1 ${page === "DashboardCategory" || page === "ManageCategory" ? "active" : ""}`}
                   onMouseEnter={() => setHover("c") }
                   onMouseLeave={() => setHover(null)}>
-                     {hover === "c" || page === "DashboardCategory" ? <img src={IconC}/> : <img src={IconCBlack}/>}
+                     {hover === "c" || page === "DashboardCategory" || page === "ManageCategory" ? <img src={IconC}/> : <img src={IconCBlack}/>}
                   <h2> Categories</h2>
                </button>             
              </Link>
-                  {page === "DashboardCategory" && (
+                  {(page === "DashboardCategory" || page === "ManageCategory") && (
                      <div className="sub-menu">
                         <Link to="/dashboardCategory">
                         <div className='d-sub'>

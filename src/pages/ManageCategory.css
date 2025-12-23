@@ -1,0 +1,80 @@
+.dtable{
+    background-color: #ffffff;
+    border-radius: 20px;
+    height: 400px;
+}
+
+.home-table {
+    width: 100%; 
+    /* background-color: #ffffff; */
+    /* border-radius: 15px; */
+    border-spacing: 0 10px; /* **ช่องว่างแนวตั้ง 10px** ระหว่างแถว */
+    padding: 20px;
+}
+
+.home-table th {
+    background-color: transparent; 
+    color: #999; /* สีเทาอ่อน */
+    font-weight: 500;
+    padding: 10px 10px; 
+    text-align: left; 
+    border: none; 
+    font-size: 0.8em;
+}
+
+.home-table tr {
+    font-size: 15px;
+    border: 2px; /* **ลบเส้นขอบเซลล์ออกทั้งหมด** */
+    padding: 10px 8px; 
+    text-align: left; 
+    color: #444;
+}
+
+.home-table td {    
+    padding: 12px 10px;
+    border: none;
+    border-bottom: 1px solid #ddd; /* เส้นใต้แต่ละบรรทัด */
+    font-size: 15px;
+    color: #444;
+}
+
+.home-table .but{
+    display: flex;
+    gap: 10px;
+}
+
+/* คอลัมน์ที่ 1: Sl. Number (สั้นมาก) */
+.home-table th:nth-child(1),
+.home-table td:nth-child(1) {
+    width: 5%; /* หรือ width: 60px; */
+    text-align: center;
+}
+
+/* คอลัมน์ที่ 3: Total (สั้น) */
+.home-table th:nth-child(2),
+.home-table td:nth-child(2) {
+    width: 15%; /* หรือ width: 80px; */
+    text-align: center;
+}
+
+/* คอลัมน์ที่ 3: Total (สั้น) */
+.home-table th:nth-child(3),
+.home-table td:nth-child(3) {
+    width: 10%; /* หรือ width: 80px; */
+    text-align: center;
+}
+
+/* คอลัมน์ที่ 3: Total (สั้น) */
+.home-table th:nth-child(4),
+.home-table td:nth-child(4) {
+    width: auto; /* หรือ width: 80px; */
+    text-align: center;
+}
+
+/* คอลัมน์ที่ 4: Edit (สั้น) */
+.home-table th:nth-child(5),
+.home-table td:nth-child(5) {
+    width: 12%; /* หรือ width: 100px; */
+    text-align: center;
+}
+

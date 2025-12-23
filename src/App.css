@@ -95,6 +95,19 @@ body.sidebar-open .content {
     background: #17E686;
 }
 
+.button-add-new-category {
+    font-family: "Quicksand", sans-serif !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background: transparent;   
+    border: none;              
+    padding: 0;                
+    
+    cursor: pointer;
+}
+
 
 .glass-panel2{
 
@@ -316,15 +329,28 @@ body.sidebar-open .content {
     border: 2px solid transparent; 
 }
 
-.category-panel:hover {
+.category-panel:hover ,.color-panel:hover {
     border: 2px solid rgba(0, 0, 0, 0.384); 
     box-shadow: none; 
 }
 
-.category-panel.active {
+.category-panel.active ,.color-panel.active{
     border: 2px solid black; 
     box-shadow: none; 
 }
+
+.color-panel {
+    width: 25px;               /* กำหนดความกว้าง */
+    height: 25px;              /* กำหนดความสูงให้เท่ากัน */
+    padding: 0;                /* เอา padding ออก เพราะต้องการให้มันกลมพอดี */
+    border-radius: 50%;        /* ทำให้เป็นวงกลม */
+    cursor: pointer;
+
+    box-sizing: border-box;
+    border: 2px solid transparent;  /* หรือเลือกสี border ตามต้องการ */
+}
+
+
 /* NOTE textarea */
 .input-note {
     width: 100%;
