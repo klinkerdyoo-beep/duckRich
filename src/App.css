@@ -1,12 +1,15 @@
 
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     font-family: "Quicksand", sans-serif !important;
 
     min-height: 100vh; /* ต้องมี min-height เพื่อให้เต็มหน้าจอ */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 0;
     font-family: Arial, sans-serif;
     /* ใช้พื้นหลังเคลื่อนไหวเดิม */
@@ -20,10 +23,22 @@ body {
   100% { background-position: 50% 0%; }
 }
 
+/* .app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+} */
+
 /* เวลา sidebar ปิด */
 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* คุม layout ระดับหน้า */
+  align-items: center;
   margin-left: 240px;
-  transition: 0.4s ease;
+    min-height: 100vh;
+  /* transition: 0.4s ease; */
 }
 
 /* sidebar เปิดอยู่ → ขยับ content ออกไป */
@@ -50,34 +65,44 @@ body.sidebar-open .content {
     justify-content: space-between;
     align-items: center;
 }
-.button-edit {
+
+*{
     font-family: "Quicksand", sans-serif !important;
-    background: linear-gradient(-90deg, #FD9A0F, #FFB956, #FD9A0F);
-    color: rgb(82, 82, 82);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+}
+
+.b-edit {
+    color: #001462;
+    padding: 10px 10px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
 }
 
-.button-edit:hover {
-    background: rgb(255, 218, 144);
+.b-edit:hover {
+    /* background: rgb(255, 218, 144); */
+    transform: scale(1.25);
 }
 
-.button-delete {
-    font-family: "Quicksand", sans-serif !important;
-    background: linear-gradient(-90deg, #FD0F0F, #FF7E7E, #FD0F0F);
-    color: rgb(82, 82, 82);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
+.trash-icon {
+  color: red;
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
-.button-delete:hover {
-    background: #ffa7a7;
+.trash-icon:hover {
+  transform: scale(1.25);
+  /* transition: transform 0.2s; */
+}
+
+.pencil-icon {
+  color: blue;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.pencil-icon:hover {
+  transform: scale(1.25);
+  /* transition: transform 0.2s; */
 }
 
 .button-save {
@@ -177,7 +202,8 @@ body.sidebar-open .content {
 .overview-box-2 {
     /* background: rgba(255, 255, 255, 0.759); */
     display: flex;
-    background-color: #80daf8;
+    /* background-color: #80daf8; */
+    background-color: #ffffff00;
     padding: 5px 20px;
     border-radius: 15px;
     height: fit-content;
@@ -234,7 +260,7 @@ body.sidebar-open .content {
 
       /* ขนาดและระยะห่าง */
       width: 1000px;
-      height: 650px;
+      height: 600px;
       max-width: 1000px;    
       padding: 20px;
       padding-top: 20px;
@@ -242,6 +268,7 @@ body.sidebar-open .content {
       display: flex;
       /* justify-content: center; */
       flex-direction: column; 
+          overflow: auto;
       gap: 10px;
       background: rgba(255, 255, 255, 0.759);
       /* เอฟเฟกต์เบลอพื้นหลัง */
@@ -261,7 +288,7 @@ body.sidebar-open .content {
 .for-panel3{
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    /* max-width: 500px; */
     gap: 0px;
     padding: 0px 20px;
     margin: 0px 0px;
@@ -297,12 +324,15 @@ body.sidebar-open .content {
     padding: 10px 20px;
     border-radius: 20px;
     cursor: pointer;
-}
-.ex.active{
-    color: white;
-    background-color: #FD0F0F;
 
 }
+
+
+.ex:hover {
+    font-weight: 700;
+  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+}
+
 
 .in{
     color: green;
@@ -310,9 +340,31 @@ body.sidebar-open .content {
     border-radius: 20px;
     cursor: pointer;
 }
-.in.active{
-    color: white;
-    background-color: green;
+.in.active, .ex.active, .in:focus:hover, .ex:focus:hover{
+    font-weight: 700;
+    /* color: #ffffff; */
+  box-shadow: 0 4px 3px 1px #FCFCFC, 
+  0 6px 8px #d9d6d6, 0 -4px 4px #CECFD1, 
+  0 -6px 4px #FEFEFE, inset 0 0 5px 3px rgba(170, 170, 170, 0.875), 
+  inset 0 0 40px rgb(236, 236, 236);
+}
+
+.in:hover{
+    font-weight: 700;
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+}
+
+.category-panel-show {    
+    display: inline-flex;      
+    min-width: 100px;     
+    max-width: 160px;
+    border-radius: 20px;
+
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-weight: 500;
+
 }
 
 .category-panel {
@@ -320,23 +372,32 @@ body.sidebar-open .content {
     width: 100px;
     padding: 7px 10px;
     border-radius: 20px;
+
     cursor: pointer;
     align-items: center; 
     justify-content: center;
     color: white;
 
     box-sizing: border-box; 
-    border: 2px solid transparent; 
+    /* border: 2px solid ;  */
+    background-color: none; 
 }
 
 .category-panel:hover ,.color-panel:hover {
-    border: 2px solid rgba(0, 0, 0, 0.384); 
-    box-shadow: none; 
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1; 
 }
 
 .category-panel.active ,.color-panel.active{
-    border: 2px solid black; 
-    box-shadow: none; 
+    font-weight: 700;
+    /* color: #ffffff; */
+    border: none;
+
+  box-shadow: 0 4px 3px 1px #FCFCFC, 
+  0 6px 8px #d9d6d6, 0 -4px 4px #CECFD1, 
+  0 -6px 4px #FEFEFE, inset 0 0 5px 3px rgba(0, 0, 0, 0.259), 
+  inset 0 0 40px rgba(236, 236, 236, 0.626);
 }
 
 .color-panel {
@@ -409,7 +470,11 @@ body.sidebar-open .content {
     width: 28px;
     height: 28px;
     border-radius: 50%; /* วงกลม */
-    background-color: #89abf3; 
+    /* background-color: #89abf3;  */
+      background:
+    radial-gradient(at top left, #b5caf8ea 0%, transparent 60%),
+    radial-gradient(at bottom right, #89abf3 0%, transparent 60%),
+    linear-gradient(135deg, #89aaf089, #89abf3);
     color: #ffffff;
     font-size: 0.85em;
     font-weight: bold;

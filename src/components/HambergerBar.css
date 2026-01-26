@@ -13,10 +13,10 @@ a {
    display: inline-block;
 }
 /* Hamburger icon */
-.hamburger {
+/* .hamburger {
   position: fixed;
   top: 20px;
-  left: 20px; /* ติดขอบ sidebar */
+  left: 20px; 
   width: 30px;
   height: 22px;
   display: flex;
@@ -25,38 +25,43 @@ a {
   cursor: pointer;
   z-index: 200;
   transition: 0.50s ease;
-}
+} */
 
-.hamburger.open {
-  left: 320px; /* <<< อยู่ชิด sidebar */
-}
+/* .hamburger.open {
+  left: 320px;
+} */
 
-.hamburger span {
+/* .hamburger span {
   width: 100%;
   height: 4px;
   background: #333;
   border-radius: 4px;
   transition: 0.3s ease;
-}
+} */
 
 /* Transform to X */
-.hamburger.open span:nth-child(1) {
+/* .hamburger.open span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
-}
+} */
 
-.hamburger.open span:nth-child(2) {
+/* .hamburger.open span:nth-child(2) {
   opacity: 0;
-}
+} */
 
-.hamburger.open span:nth-child(3) {
+/* .hamburger.open span:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
-}
+} */
+
 .sidebar{    
     font-family: "Quicksand", sans-serif !important;
     background-color: rgba(255, 255, 255, 0.683);
+    /* background-color:     radial-gradient(at top left, #6FA8FF, transparent 60%),
+    radial-gradient(at bottom right, #0068FF, transparent 60%),
+    linear-gradient(135deg, #3E8FFF, #0068FF); */
     position: fixed;
     top: 0;
-    left: -300px;         /* ซ่อน Sidebar */
+    /* left: -300px; */
+    left: 0;
     width: 240px;
     height:100vh;
     
@@ -66,15 +71,15 @@ a {
     gap: 10px;
     
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-    padding: 10px;
-    padding-top: 70px;;
-    transition: 0.5s ease;
+    /* padding: 10px; */
+    padding-top: 30px;;
+    /* transition: 0.5s ease; */
     z-index: 150;
 }   
 
-.sidebar.show {
+/* .sidebar.show {
   left: 0;
-}
+} */
 
 .b1 img{
     width: 30px;
@@ -87,6 +92,8 @@ a {
     font-family: "Quicksand", sans-serif !important;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-items: center;
     width: 200px;
     gap: 20px;
     padding: 2px 15px;
@@ -95,18 +102,62 @@ a {
     background: none;
     border: none; 
 }
-.b1:hover {
-    background: linear-gradient(-90deg, #0068FF, #3E8FFF, #0068FF);
-    color: white;
+
+
+.b1:hover{
+  background:
+    radial-gradient(at top left, rgba(111,168,255,0.25), transparent 60%),
+    linear-gradient(135deg, rgba(62,143,255,0.25), rgba(0,104,255,0.25));
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+
+  transform: translateY(-0.5px);
 }
 
 .b1.active {
-    background: linear-gradient(-90deg, #0068FF, #3E8FFF, #0068FF);
-    color: white;
+    /* background: linear-gradient(-90deg, #0068FF, #3E8FFF, #0068FF); */
+
+    /* background:
+  radial-gradient(at top left, #6FA8FF 0%, transparent 60%),
+  radial-gradient(at bottom right, #0068FF 0%, transparent 60%),
+  linear-gradient(135deg, #3E8FFF, #0068FF);
+
+    color: white; */
+
+  font-family: "Quicksand", sans-serif !important;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 6px 18px;
+  border-radius: 20px;
+
+  background:
+    radial-gradient(at top left, #6FA8FF 0%, transparent 60%),
+    radial-gradient(at bottom right, #0068FF 0%, transparent 60%),
+    linear-gradient(135deg, #3E8FFF, #0068FF);
+
+  color: white;
+  border: none;
+
+box-shadow:
+  inset 2px 2px 6px rgba(255, 255, 255, 0.35),
+  inset -2px -2px 6px rgba(255, 255, 255, 0.35),
+  inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+  0 6px 20px rgba(0, 104, 255, 0.25);
+
+}
+
+.b1.active:hover {
+  filter: brightness(1.05) saturate(1.1);
+}
+
+.b1:hover svg {
+  transform: scale(1.1);
 }
 
 .b1 h2{
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .sub-menu{
@@ -138,13 +189,6 @@ a {
 .b2:hover, .cer:hover, .b2.active{
    background: linear-gradient(-90deg, #438af5, rgb(95, 159, 255), #438af5);     
 }
-
-/* .cer{
-  width: 30px;
-  height: 30px;
-  background-color: #92bdff ;
-  border-radius: 40px;
-} */
 
 .logo {
   width: 150px;

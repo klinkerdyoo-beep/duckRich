@@ -7,6 +7,8 @@ import DailyRecord from "./pages/DailyRecord";
 import DashboardCategory from "./pages/DashboardCategory";
 import ManageCategory from "./pages/ManageCategory";
 import AddNewCategory from "./pages/AddNewCategory";
+import AddNewWallet from "./pages/AddNewWallet";
+import Wallets from "./pages/Wallets";
 
 export const AppRoutes  = () => {
     return(
@@ -19,6 +21,8 @@ export const AppRoutes  = () => {
                 <Route path="/dashboardCategory" element={<DashboardCategory />} />
                 <Route path="/manageCategory" element={<ManageCategory />} />
                 <Route path="/addNewCategory" element={<AddNewCategory />} />
+                <Route path="/wallet" element={<Wallets/>} />
+                <Route path="/addNewWallet" element={<AddNewWallet/>} />
             </Routes>
         </Router>   
     )

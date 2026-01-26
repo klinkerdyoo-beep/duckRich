@@ -16,7 +16,7 @@
 }
 .search{
     color: white;
-    background-color: rgb(95, 95, 95);
+    background-color: rgb(235, 234, 234);
     display: flex;
     text-align: center;   
     justify-content: center;
@@ -31,7 +31,27 @@
     padding: 0;
     border: none;
     background: none;
-    color: rgb(255, 255, 255);
+    color: rgb(41, 25, 25);
     text-align: center;
     outline: none; 
+}
+
+.radio {
+        padding: 5px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.radio.active, .radio:focus:hover{
+    font-weight: 700;
+    /* color: #ffffff; */
+  box-shadow: 0 4px 3px 1px #FCFCFC, 
+  0 6px 8px #d9d6d6, 0 -4px 4px #CECFD1, 
+  0 -6px 4px #FEFEFE, inset 0 0 5px 3px rgba(170, 170, 170, 0.875), 
+  inset 0 0 40px rgb(236, 236, 236);
+}
+
+.radio:hover{
+    font-weight: 700;
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
 }

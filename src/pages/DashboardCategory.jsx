@@ -17,11 +17,9 @@ const DashboardCategory = () => {
         <>
         <HambergerBar page={page} setPage={setPage}/> 
         <div className={`content`}>
-            <div className='header-section'>
-                <h1> Dashboard</h1>
-            </div>
+            <div className='header-section'>            </div>
             <div className='glass-panel2' style={{display:'flex', flexDirection: "column" }}>
-                <p>All Category</p>
+                {/* <p>All Category</p> */}
                 <div>
                         <div style={{display: "flex", gap:"20px"}}>
                             {category.map((row, index) => (

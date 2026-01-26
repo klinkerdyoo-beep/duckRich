@@ -1,31 +1,151 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css'; 
 import './Home.css';
 import { Link } from 'react-router-dom';
 import HambergerBar from '../components/HambergerBar'
 import Fliter from '../components/Fliter'
+import { Pencil, Trash2 } from 'lucide-react';
+import wallets from "../data/wallets";
+import * as LucideIcons from "lucide-react";
+import iconGroupd from "../data/lucidelcons/index";
+import DayTable from "../components/dayTable";
 
 
 const Home = () => {
-    const data = [
-        { id: 1, date: '24/5/2568', item: 'ค่าของกิน', amount: '200 b' },
-        { id: 2, date: '25/5/2568', item: 'ค่าเดินทาง', amount: '50 b' },
-        { id: 3, date: '25/5/2568', item: 'ค่ากาแฟ', amount: '120 b' },
-    ];
+    const [transaction, setTransaction] = useState([]);
+    const [walletList, setWalletList] = useState([]);
+    const [categoryList, setcategorytList] = useState([]);
+
     // const [isOpen, setIsOpen] = useState(false);
     const [page, setPage] = useState("Home");
+    const [filter, setFilter] = useState(1);
+
+    const getTransaction = async () => {
+        try{
+            const response = await fetch("http://localhost:5000/transaction")
+            const jsonData = await response.json();
+
+            setTransaction(jsonData);
+            console.log("set transaxtion successfully");
+        }catch (err){
+            console.error(err.message);
+        }
+    };
+
+    const getWallets = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/wallets");
+            const jsonData = await response.json();
+            setWalletList(jsonData);
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
+    const getCategory = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/category");
+            const jsonData = await response.json();
+            setcategorytList(jsonData);
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
+
+    useEffect(() => {
+        getTransaction();
+        getWallets();
+        getCategory();
+    }, []);
+
+    const walletMap = Object.fromEntries(
+        walletList.map(w => [w.id, w])
+    );
+
+    const categoryMap = Object.fromEntries(
+        categoryList.map(c => [c.id, c])
+    );
+    
+        // ได้ string YYYY-MM-DD (local time)
+    const toLocalDateString = (date) =>
+    new Date(date).toLocaleDateString("en-CA");
+
+    // วันเริ่มสัปดาห์ (จันทร์)
+    const getWeekStart = (date) => {
+        const d = new Date(date);
+        const day = d.getDay(); // 0=อา
+        const diff = d.getDate() - (day === 0 ? 6 : day - 1);
+    return new Date(d.setDate(diff));
+    };
+
+    // เช็กว่าอยู่สัปดาห์เดียวกันไหม
+    const isSameWeek = (dateStr, baseDate = new Date()) => {
+        return (
+            getWeekStart(dateStr).toDateString() ===
+            getWeekStart(baseDate).toDateString()
+        );
+    };
+
+    const now = new Date();
+    const today = toLocalDateString(now);
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+
+    const expense = transaction.filter(t => t.type === "EX");
+    
+
+    const todayTransactions  = transaction.filter(
+        t => toLocalDateString(t.date) === today
+    );
+    console.log("DayTable rows", transaction);
+    const todayExpense = expense.filter(
+        t => toLocalDateString(t.date) === today
+    );
+    transaction.forEach(t => {
+    console.log(
+        t.type,
+        toLocalDateString(t.date),
+        today
+    );
+    })
+    console.log("todayTransactions", todayTransactions);
+
+    const weekExpense = expense.filter(
+    t => isSameWeek(t.date, now)
+    )
+
+    const monthExpense = expense.filter(t => {
+        const d = new Date(t.date);
+        return (
+            d.getMonth() === currentMonth &&
+            d.getFullYear() === currentYear
+        );
+    });
+
+    const sumAmount = list =>
+        list.reduce((sum, t) => sum + Number(t.amount), 0);
+
+    const expenseTodayCount = todayExpense.length;
+    const expenseTodayTotal = sumAmount(todayExpense);
+
+    const expenseWeekCount = weekExpense.length;
+    const expenseWeekTotal = sumAmount(weekExpense);
+
+    const expenseMonthCount = monthExpense.length;
+    const expenseMonthTotal = sumAmount(monthExpense);
+
 
   return (
     <>
     <HambergerBar page={page} setPage={setPage}/>
     <div className={`content`}>
         <div className="header-section">
-            <h1>Dashboard </h1>
         </div>
 <div className="overview">
 
     <div className='' style={{display:'flex',flexDirection: "column",gap: '20px'}}>
-        <div style={{display:'flex' ,justifyContent: 'space-between'}}>
+        <div style={{display:'flex' ,justifyContent: 'space-between', gap: '20px'}}>
             <div className="overview-box"
                 style={{
                     background: `
@@ -37,9 +157,9 @@ const Home = () => {
             >
                 <div style={{display:'flex', alignItems:'center',justifyContent: 'space-between',gap: '10px'}}>
                     <p className="overview-title">รายจ่ายวันนี้</p>
-                    <p className="overview-sub">3 รายการ</p>
+                    <p className="overview-sub">{expenseTodayCount} รายการ</p>
                 </div>
-                <h2 className="overview-value">320 ฿</h2>
+                <h2 className="overview-value">{expenseTodayTotal} ฿</h2>
             </div>
 
             <div className="overview-box"
@@ -52,10 +172,29 @@ const Home = () => {
                 ,height: '100px'
                 }}
             >
-                <p className="overview-title">รายจ่ายรวมเดือนนี้</p>
-                <h2 className="overview-value">5,420 ฿</h2>
+                <div style={{display:'flex', alignItems:'center',justifyContent: 'space-between',gap: '10px'}}>
+                    <p className="overview-title">รายจ่ายเดือนนี้</p>
+                    <p className="overview-sub">{expenseMonthCount} รายการ</p>
+                </div>
+                <h2 className="overview-value">{expenseMonthTotal} ฿</h2>
                 {/* <p style={{background:'white',borderRadius:'20px',textAlign:'center'}} className="overview-change positive">↑ 12% เพิ่มขึ้นจากเดือนก่อน</p> */}
-            </div>              
+            </div>  
+
+                <div className="overview-box"
+        style={{
+            background: `
+            radial-gradient(#F098C0 2px, transparent 2px) 0 0 / 20px 20px,
+            radial-gradient(#F098C0 2px, transparent 2px) 10px 10px / 20px 20px,
+            linear-gradient(-90deg, #E6549C, #F098C0, #E6549C)
+            `
+        }}
+    >
+        <div style={{display:'flex', alignItems:'center',justifyContent: 'space-between',gap: '10px'}}>
+            <p className="overview-title">รายจ่ายสัปดาห์นี้</p>
+            <p className="overview-sub">{expenseWeekCount} รายการ</p>
+        </div>
+        <h2 className="overview-value">{expenseWeekTotal} ฿</h2>
+    </div>            
         </div>
 
             
@@ -65,68 +204,35 @@ const Home = () => {
         </div>
     </div>
 
-
-    {/* 3. สรุปรายจ่ายตามสัปดาห์ (Weekly Summary) - โทนเขียว/มิ้นต์ (Green/Mint) ให้ความรู้สึกของการเติบโต/ข้อมูลโดยละเอียด */}
-    <div className="overview-box"
-        style={{
-            background: `
-            radial-gradient(#F098C0 2px, transparent 2px) 0 0 / 20px 20px,
-            radial-gradient(#F098C0 2px, transparent 2px) 10px 10px / 20px 20px,
-            linear-gradient(-90deg, #E6549C, #F098C0, #E6549C)
-            `
-        }}
-    >
-        <p className="overview-title">สรุปรายจ่ายตามสัปดาห์</p>
-        <p className="overview-sub">Week 1: 1,200 ฿</p>
-        <p className="overview-sub">Week 2: 900 ฿</p>
-        <p className="overview-sub">Week 3: 1,050 ฿</p>
-        <p className="overview-sub">Week 4: 1,100 ฿</p>
-    </div>
 </div>
+            <div className="glass-panel"> 
+                    <Fliter filter={filter} setFilter={setFilter} />
+                {filter === 1 && (
+                <DayTable
+                    transaction={todayTransactions}
+                    walletMap={walletMap}
+                    categoryMap={categoryMap}
+                />
+                )}
 
-        <div className="glass-panel"> 
-                <Fliter/>
-            <div className='dtable'>
-            <table className="home-table">
-                <thead>
-                    <tr> 
-                        <th>Sl. Number</th> {/* เพิ่มหัวข้อ Sl. Number */}
-                        <th>Date</th>
-                        <th>Note</th>
-                        <th>Total</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((row, index) => (
-                        <tr key={row.id} className='home-table-tr'>
-                            <td>
-                                <span className='serial-number'>{('0' + (index + 1)).slice(-2)}</span>
-                            </td>
-                            <td>{row.date}</td>
-                            <td>{row.item}</td>
-                            <td>{row.amount}</td>
-                            <td>
-                                <Link to={`edit/${row.id}`}>
-                                <button className='button-edit'>Edit</button>
-                                </Link>
-                            </td> 
+                {filter === 2 && (
+                <DayTable
+                    transaction={weekExpense}
+                    walletMap={walletMap}
+                    categoryMap={categoryMap}
+                />
+                )}
+                {filter === 3 && (
+                <DayTable
+                    transaction={weekExpense}
+                    walletMap={walletMap}
+                    categoryMap={categoryMap}
+                />
+                )}
+            </div> 
 
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            </div>
-        </div>
+        
 
-        {/* เพิ่มส่วน Pagination (เลขหน้า) */}
-        <div className='pagination-container'>
-            <button className='pagination-button active'>1</button>
-            <button className='pagination-button'>2</button>
-            <span>...</span>
-            <button className='pagination-button'>8</button>
-            <button className='pagination-arrow'>→</button>
-        </div>
     </div>
     </>
   );

@@ -10,6 +10,7 @@ import IconNBlack from '../assets/IconNoteBlack.png';
 import IconN from '../assets/IconNote.png';
 import IconCBlack from '../assets/IconCategoryBlack.png';
 import IconC from '../assets/IconCategory.png';
+import { LayoutDashboard, Notebook, PlusCircle, Wallet, Layers } from 'lucide-react';
 
 
 function HambergerBar({page, setPage}) {
@@ -36,7 +37,8 @@ function HambergerBar({page, setPage}) {
                <button className={`b1 ${page === "Home" ? "active" : ""} }`}
                   onMouseEnter={() => setHover("db") }
                   onMouseLeave={() => setHover(null)}>
-                     {hover === "db" || page === "Home" ?  <img src={IconDb}/> :  <img src={IconDbBlack}/>}
+                     {/* {hover === "db" || page === "Home" ?  <img src={IconDb}/> :  <img src={IconDbBlack}/>} */}
+                     <LayoutDashboard size={28} strokeWidth={2} color={hover === "db" || page === "Home" ? "#ffffff" : "#000000"}/>
                   <h2>Dashboard</h2>
                </button>
             </Link>
@@ -44,7 +46,8 @@ function HambergerBar({page, setPage}) {
                   <button className={`b1 ${page === "DailyRecord" ? "active" : ""}`}
                      onMouseEnter={() => setHover("n") }
                      onMouseLeave={() => setHover(null)}>
-                        {hover === "n" || page === "DailyRecord" ? <img src={IconN}/> : <img src={IconNBlack}/>}
+                        {/* {hover === "n" || page === "DailyRecord" ? <img src={IconN}/> : <img src={IconNBlack}/>} */}
+                        <Notebook size={28} strokeWidth={2} color={hover === "n" || page === "DailyRecord" ? "#ffffff" : "#000000"}/>
                      <h2>Daily<br />Record</h2>
                   </button>
              </Link>
@@ -52,17 +55,28 @@ function HambergerBar({page, setPage}) {
                <button className={`b1 ${page === "CreateDailyRecord" ? "active" : ""}`}
                   onMouseEnter={() => setHover("an") }
                   onMouseLeave={() => setHover(null)}>
-                     {hover === "an" || page === "CreateDailyRecord" ? <img src={IconAN}/> : <img src={IconANBlack}/>}
+                     {/* {hover === "an" || page === "CreateDailyRecord" ? <img src={IconAN}/> : <img src={IconANBlack}/>} */}
+                     <PlusCircle size={28} strokeWidth={2} color={hover === "an" || page === "CreateDailyRecord" ? "#ffffff" : "#000000"}/>
                   <h2>Add <br /> New Record</h2>
                </button>
              </Link>
+            <Link to="/wallet" onClick={() => setPage("Wallets")}>
+               <button className={`b1 ${page === "Wallets" ? "active" : ""}`}
+                  onMouseEnter={() => setHover("w") }
+                  onMouseLeave={() => setHover(null)}>
+                     {/* {hover === "an" || page === "Wallets" ? <img src={IconAN}/> : <img src={IconANBlack}/>} */}
+                     <Wallet size={28} strokeWidth={2} color={hover === "w" || page === "Wallets" ? "#ffffff" : "#000000"} />
+                  <h2>Wallet</h2>
+               </button>
+            </Link> 
              <Link to="/dashboardCategory" onClick={() => setPage("DashboardCategory")}>
                <button className={`b1 ${page === "DashboardCategory" || page === "ManageCategory" ? "active" : ""}`}
                   onMouseEnter={() => setHover("c") }
                   onMouseLeave={() => setHover(null)}>
-                     {hover === "c" || page === "DashboardCategory" || page === "ManageCategory" ? <img src={IconC}/> : <img src={IconCBlack}/>}
+                     {/* {hover === "c" || page === "DashboardCategory" || page === "ManageCategory" ? <img src={IconC}/> : <img src={IconCBlack}/>} */}
+                     <Layers size={28} strokeWidth={2} color={hover === "c" || page === "DashboardCategory" || page === "ManageCategory" ? "#ffffff" : "#000000"}/>
                   <h2> Categories</h2>
-               </button>             
+               </button>            
              </Link>
                   {(page === "DashboardCategory" || page === "ManageCategory") && (
                      <div className="sub-menu">

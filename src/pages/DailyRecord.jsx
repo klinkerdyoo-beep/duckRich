@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-
 import '../App.css'; 
 import './DailyRecord.css';
 import { Link } from 'react-router-dom';
 import HambergerBar from '../components/HambergerBar'
 import Fliter from '../components/Fliter'
+import { Pencil, Trash2 } from 'lucide-react';
+
 
 
 const DailyRecord = () => {
@@ -20,7 +21,6 @@ const DailyRecord = () => {
         <HambergerBar page={page} setPage={setPage}/>
         <div className={`content`}>
             <div className='header-section'>
-                <h1>Daily Record</h1>
             </div>
             <div>
                 <div className='glass-panel3'>
@@ -48,19 +48,25 @@ const DailyRecord = () => {
                                 <td>{row.amount}</td>
                             <td>
                                 <div className='but'>
-                                    <Link to={`edit/${row.id}`}>
-                                    <button className='button-edit'>Edit</button>
+                                    <Link to={`edit/${row.id}`} className="" >
+                                    <Pencil className="pencil-icon"/>
                                     </Link>
-                                    <Link to={`edit/${row.id}`}>
-                                    <button className='button-delete'>Delete</button>
+                                    <Link to={`edit/${row.id}`} className="">
+                                        {/* <Trash2 className="text-red-500 w-5 h-5 inline-blocktransform hover:scale-125 transition-transform duration-200" />  */}
+                                        <Trash2 className="trash-icon" /> 
                                     </Link>                                    
-                                </div>
-
-                            </td> 
+                                </div>  
+                            </td>
 
                             </tr>
                             ))}
                         </table>
+                    </div>
+                    <div className='inline-flex'>
+                        <div className='box1'></div>
+                        <div className='box2'></div>
+
+                        
                     </div>
                 </div>
             </div>

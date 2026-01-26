@@ -1,0 +1,61 @@
+import{
+    House,
+    Lamp,
+    LampCeiling,
+    MapPinHouse,
+    BrushCleaning,
+    AirVent,
+    Armchair,
+    BedSingle,
+    CookingPot,
+    Drill,
+    Hammer,
+    Microwave,
+    Refrigerator,
+    Router,
+    ShowerHead,
+    Toilet,
+    WashingMachine,
+    TvMinimalPlay,
+    Baby,
+    CreditCard,
+    Banknote,
+    PiggyBank,
+    Ambulance,
+    Bath,
+    Dog,
+    Wifi
+    
+}from "lucide-react";
+
+const homeLucideIcons = {
+    House,
+    Lamp,
+    LampCeiling,
+    MapPinHouse,
+    BrushCleaning,
+    AirVent,
+    Armchair,
+    BedSingle,
+    CookingPot,
+    Drill,
+    Hammer,
+    Microwave,
+    Refrigerator,
+    Router,
+    ShowerHead,
+    Toilet,
+    WashingMachine,
+    Bath,
+    TvMinimalPlay,
+    Baby,
+    Dog,
+    CreditCard,
+    Banknote,
+    PiggyBank,
+    Ambulance,
+    Wifi
+
+
+};
+export default homeLucideIcons;

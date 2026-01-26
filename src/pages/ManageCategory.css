@@ -1,10 +1,13 @@
-.dtable{
+
+/* .dtable{
     background-color: #ffffff;
     border-radius: 20px;
-    height: 400px;
-}
+    height: auto ;
+    max-height: 550px;
+    overflow: auto;
+} */
 
-.home-table {
+.category-table {
     width: 100%; 
     /* background-color: #ffffff; */
     /* border-radius: 15px; */
@@ -12,7 +15,7 @@
     padding: 20px;
 }
 
-.home-table th {
+.category-table th {
     background-color: transparent; 
     color: #999; /* สีเทาอ่อน */
     font-weight: 500;
@@ -22,7 +25,7 @@
     font-size: 0.8em;
 }
 
-.home-table tr {
+.category-table tr {
     font-size: 15px;
     border: 2px; /* **ลบเส้นขอบเซลล์ออกทั้งหมด** */
     padding: 10px 8px; 
@@ -30,7 +33,7 @@
     color: #444;
 }
 
-.home-table td {    
+.category-table td {    
     padding: 12px 10px;
     border: none;
     border-bottom: 1px solid #ddd; /* เส้นใต้แต่ละบรรทัด */
@@ -38,43 +41,231 @@
     color: #444;
 }
 
-.home-table .but{
+.category-table .but{
     display: flex;
     gap: 10px;
 }
 
 /* คอลัมน์ที่ 1: Sl. Number (สั้นมาก) */
-.home-table th:nth-child(1),
-.home-table td:nth-child(1) {
+.category-table th:nth-child(1),
+.category-table td:nth-child(1) {
     width: 5%; /* หรือ width: 60px; */
     text-align: center;
 }
 
 /* คอลัมน์ที่ 3: Total (สั้น) */
-.home-table th:nth-child(2),
-.home-table td:nth-child(2) {
+.category-table th:nth-child(2),
+.category-table td:nth-child(2) {
     width: 15%; /* หรือ width: 80px; */
     text-align: center;
 }
 
 /* คอลัมน์ที่ 3: Total (สั้น) */
-.home-table th:nth-child(3),
-.home-table td:nth-child(3) {
+.category-table th:nth-child(3),
+.category-table td:nth-child(3) {
     width: 10%; /* หรือ width: 80px; */
     text-align: center;
 }
 
 /* คอลัมน์ที่ 3: Total (สั้น) */
-.home-table th:nth-child(4),
-.home-table td:nth-child(4) {
+.category-table th:nth-child(4),
+.category-table td:nth-child(4) {
     width: auto; /* หรือ width: 80px; */
     text-align: center;
 }
 
 /* คอลัมน์ที่ 4: Edit (สั้น) */
-.home-table th:nth-child(5),
-.home-table td:nth-child(5) {
+.category-table th:nth-child(5),
+.category-table td:nth-child(5) {
     width: 12%; /* หรือ width: 100px; */
     text-align: center;
 }
+
+.toggle-container {
+  align-self: flex-start;
+  padding: 1% 13%;
+}
+
+.toggle.neo-btn {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.toggle .button {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: #eaeaea;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.25s ease;
+  box-shadow:
+    0 10px 25px -4px rgba(0, 0, 0, 0.5),
+    inset 0 -3px 4px -1px rgba(0, 0, 0, 0.2),
+    0 -10px 15px -1px rgba(255, 255, 255, 0.6),
+    inset 0 3px 4px -1px rgba(255, 255, 255, 0.2);
+}
+
+.toggle .label {
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.toggle.neo-btn:hover .button {
+  transform: translateY(-2px);
+}
+
+.toggle.neo-btn:active .button {
+  transform: scale(0.95);
+}
+
+.toggle h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.hidden-box {
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.edit-color{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* From Uiverse.io by KSAplay */ 
+.card {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  height: 180px;
+  width: 100%;
+  border-radius: 25px;
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  transition: 100ms ease; 
+  box-shadow: rgba(0, 0, 0, 0.15) 2px 3px 4px;
+}
+
+/* ---------- Info section ---------- */
+
+.info-section {
+  /* position: relative; */
+  display: flex;
+  padding: 5px;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  /* width: 100%; */
+  overflow-y: auto; 
+  height: 75%;
+    color: black;
+}
+
+.left-side {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 20px;
+  /* flex-direction: column; */
+  /* justify-content: space-around; */
+  /* height: 100%; */
+  /* width: 100%;  */
+  z-index: 1;
+  /* padding-left: 18px; */
+}
+
+button {
+  display: block;
+  border: none;
+  background: transparent;
+}
+
+
+
+
+
+/* ---------- Background ---------- */
+
+
+/* ---------- Days section ---------- */
+.days-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 25%;
+  background-color: #ffffff;  
+  gap: 2px;
+  box-shadow: inset 0px 2px 5px #699dd8;
+    color: white
+}
+.days-section .active {
+  background-color: #ffffff;  
+  box-shadow: inset 0px 2px 5px #ffffff;
+    font-weight: 700;
+    color: black;
+
+}
+
+.days-section button {
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #9fccff;
+  box-shadow: inset 0px 2px 5px #60a8fa;
+  cursor: pointer;
+  transition: 100ms ease;
+  gap: 5px;
+}
+
+.days-section button:hover {
+  scale: 0.9;
+  border-radius: 10px;
+}
+
+.icon-weather-day {
+  display: flex;
+  align-items: center;
+  width: 20px;
+  height: 100%;
+}
+
+.selectIcon {
+  color: rgb(68, 0, 0);
+  /* padding: 2px 2px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  /* background-color: #9fccff; */
+}
+
+.selectIcon.active{
+  /* color: red; */
+  
+  /* background-color: #60a8fa; */
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1; 
+}
+
 
