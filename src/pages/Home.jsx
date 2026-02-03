@@ -79,7 +79,6 @@ const Home = () => {
     return new Date(d.setDate(diff));
     };
 
-    // เช็กว่าอยู่สัปดาห์เดียวกันไหม
     const isSameWeek = (dateStr, baseDate = new Date()) => {
         return (
             getWeekStart(dateStr).toDateString() ===
@@ -97,6 +96,9 @@ const Home = () => {
 
     const todayTransactions  = transaction.filter(
         t => toLocalDateString(t.date) === today
+    );
+    const weekTransactions = transaction.filter(
+        t => isSameWeek(t.date)
     );
     console.log("DayTable rows", transaction);
     const todayExpense = expense.filter(
@@ -139,10 +141,10 @@ const Home = () => {
   return (
     <>
     <HambergerBar page={page} setPage={setPage}/>
-    <div className={`content`}>
-        <div className="header-section">
-        </div>
-<div className="overview">
+    <div className="content mt-5 mb-5">
+
+<div  className="overview ">
+    
 
     <div className='' style={{display:'flex',flexDirection: "column",gap: '20px'}}>
         <div style={{display:'flex' ,justifyContent: 'space-between', gap: '20px'}}>
@@ -162,6 +164,20 @@ const Home = () => {
                 <h2 className="overview-value">{expenseTodayTotal} ฿</h2>
             </div>
 
+                <div className="overview-box"
+                    style={{
+                        background: `
+                        radial-gradient(#F098C0 2px, transparent 2px) 0 0 / 20px 20px,
+                        radial-gradient(#F098C0 2px, transparent 2px) 10px 10px / 20px 20px,
+                        linear-gradient(-90deg, #E6549C, #F098C0, #E6549C) `
+                    }} >
+                    <div style={{display:'flex', alignItems:'center',justifyContent: 'space-between',gap: '10px'}}>
+                        <p className="overview-title">รายจ่ายสัปดาห์นี้</p>
+                        <p className="overview-sub">{expenseWeekCount} รายการ</p>
+                    </div>
+                    <h2 className="overview-value">{expenseWeekTotal} ฿</h2>
+                </div> 
+
             <div className="overview-box"
                 style={{
                     background: `
@@ -179,22 +195,7 @@ const Home = () => {
                 <h2 className="overview-value">{expenseMonthTotal} ฿</h2>
                 {/* <p style={{background:'white',borderRadius:'20px',textAlign:'center'}} className="overview-change positive">↑ 12% เพิ่มขึ้นจากเดือนก่อน</p> */}
             </div>  
-
-                <div className="overview-box"
-        style={{
-            background: `
-            radial-gradient(#F098C0 2px, transparent 2px) 0 0 / 20px 20px,
-            radial-gradient(#F098C0 2px, transparent 2px) 10px 10px / 20px 20px,
-            linear-gradient(-90deg, #E6549C, #F098C0, #E6549C)
-            `
-        }}
-    >
-        <div style={{display:'flex', alignItems:'center',justifyContent: 'space-between',gap: '10px'}}>
-            <p className="overview-title">รายจ่ายสัปดาห์นี้</p>
-            <p className="overview-sub">{expenseWeekCount} รายการ</p>
-        </div>
-        <h2 className="overview-value">{expenseWeekTotal} ฿</h2>
-    </div>            
+           
         </div>
 
             
@@ -205,19 +206,23 @@ const Home = () => {
     </div>
 
 </div>
+
             <div className="glass-panel"> 
                     <Fliter filter={filter} setFilter={setFilter} />
                 {filter === 1 && (
+                    todayTransactions && todayTransactions.length > 0 ?
                 <DayTable
                     transaction={todayTransactions}
                     walletMap={walletMap}
                     categoryMap={categoryMap}
                 />
+                :
+                <div className='flex justify-center items-center h-40 text-gray-400'><h1>Don't have transaction for today</h1></div>
                 )}
 
                 {filter === 2 && (
                 <DayTable
-                    transaction={weekExpense}
+                    transaction={weekTransactions}
                     walletMap={walletMap}
                     categoryMap={categoryMap}
                 />

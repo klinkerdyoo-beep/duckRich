@@ -37,10 +37,6 @@ console.log("walletList:", walletList);
   {walletList.map(wallet => (
     
     <div key={wallet.id} className="wallet-item">
-        
-        {wallet.name}
-
-      {/* Preview */}
       <div className="wallet-show small">
         <img
           src={wallets.primaryColor[wallet.primary_color]}
@@ -67,8 +63,11 @@ console.log("walletList:", walletList);
       {/* Info */}
       <div className="wallet-info">
         <h3>{wallet.name}</h3>
-        <p>Type: {wallet.wallet_type}</p>
-        <p>Balance: {wallet.balance}</p>
+        <div className="">
+          <p>Type: {wallet.wallet_type}</p>
+          <p>Balance: {wallet.balance}</p>          
+        </div>
+
       </div>
 
     </div>

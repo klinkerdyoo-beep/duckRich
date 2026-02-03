@@ -5,7 +5,6 @@
     padding: 0px 5px;
     overflow-y: auto;
     overflow-x: hidden;
-    /* width: 100%; */
 }
 
 .home-table {
@@ -14,25 +13,24 @@
 }
 
 .home-table tr {
-    color: inherit;
+  color: inherit;
 }
 
 .home-table th {
-    position: sticky;
-    top: 0; 
-    color: #999; /* สีเทาอ่อน */
-    font-weight: 500;
-    text-align: left; 
-    border: none; 
-    font-size: 0.8em;
-    z-index: 10;
-    background-color: white;
+  position: sticky;
+  top: 0; 
+  color: #999; 
+  font-weight: 500;
+  text-align: left; 
+  border: none; 
+  font-size: 0.8em;
+  z-index: 10;
+  background-color: white;
 }
 
 .home-table td {   
-    margin: 20px 0px;
-    
-    border-bottom: 1px solid #ddd; /* เส้นใต้แต่ละบรรทัด */
+  margin: 20px 0px;
+  border-bottom: 1px solid #ddd; 
 }
 
 .home-table tr {
@@ -124,3 +122,6 @@
       text-align: center;
 
   }
+
+
+/* overview */

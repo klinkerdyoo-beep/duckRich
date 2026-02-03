@@ -166,20 +166,16 @@ const ManageCategory = () => {
                                     <tr className="edit-row">
                                         <td colSpan="5">
                                             <div className="hidden-box">
-                                                <div className='flex'>
-                                                    <div>
-                                                        <div>
-                                                            <div className='for-panel3'>
-                                                                <h2>Name</h2>
-                                                                <input className='border-2 rounded-md' name='nameCategory' value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder={row.name} />
-                                                            </div>
+
+                                                    <div className='edit-input'>
+                                                        <div className='for-panel3'>
+                                                            <h2>Name</h2>
+                                                            <input className='border-2 rounded-md' name='nameCategory' value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder={row.name} />
                                                         </div>
-                                                        <div>
-                                                            <div className='for-panel3'>
-                                                                <h2>Description</h2>
-                                                                <textarea className='border-2 rounded-md' name='nameCategory' value={description} onChange={(e) => setDescription(e.target.value)} type="text" placeholder={row.description}></textarea>
-                                                            </div>
-                                                        </div>                                                    
+                                                        <div className='for-panel3'>
+                                                            <h2>Description</h2>
+                                                            <textarea className='border-2 rounded-md' name='nameCategory' value={description} onChange={(e) => setDescription(e.target.value)} type="text" placeholder={row.description}></textarea>
+                                                        </div>                                                   
                                                     </div>   
 
                                                     <div>
@@ -191,60 +187,57 @@ const ManageCategory = () => {
                                                             ))}
                                                         </div>
                                                     </div>                                                                                                     
-                                                </div>
 
+                                                <div>
+                                                    <h2>Icons</h2>
+                                                    <div className="card">
+                                                    {/* กลุ่ม icon */}
+                                                    <section className="days-section">
+                                                        {Object.entries(iconGroupd).map(([groupName, group]) => {
+                                                        const MainIcon = group.mainIcon;
 
-                                                <div className="card">
-                                                {/* กลุ่ม icon */}
-                                                <section className="days-section">
-                                                    {Object.entries(iconGroupd).map(([groupName, group]) => {
-                                                    const MainIcon = group.mainIcon;
+                                                        if (!MainIcon) return null;
 
-                                                    if (!MainIcon) return null;
-
-                                                    return (
-                                                        <button
-                                                        key={groupName}
-                                                        onClick={() => setSelectIconCategory(groupName)}
-                                                        className={`day ${
-                                                            selectIconCategory === groupName ? "active" : ""
-                                                        }`}
-                                                        >
-                                                        <MainIcon size={20} strokeWidth={2} />
-                                                        </button>
-                                                    );
-                                                    })}
-                                                </section>
-
-                                                {/* icon ภายในกลุ่ม */}
-                                                {selectIconCategory &&
-                                                iconGroupd[selectIconCategory]?.icons && (
-                                                    <section className="info-section">
-                                                    <div className="left-side">
-                                                        {Object.entries(iconGroupd[selectIconCategory].icons).map(
-                                                        ([name, Icon]) => (
+                                                        return (
                                                             <button
-                                                            key={name}
-                                                            onClick={() => setSelectIcon(name)}
-                                                            className={`selectIcon ${
-                                                                selectIcon === name ? "active" : ""
+                                                            key={groupName}
+                                                            onClick={() => setSelectIconCategory(groupName)}
+                                                            className={`day ${
+                                                                selectIconCategory === groupName ? "active" : ""
                                                             }`}
                                                             >
-                                                            <Icon size={24} strokeWidth={2} />
+                                                            <MainIcon size={20} strokeWidth={2} />
                                                             </button>
-                                                        )
-                                                        )}
-                                                    </div>
+                                                        );
+                                                        })}
                                                     </section>
-                                                )}
+
+                                                    {selectIconCategory &&
+                                                    iconGroupd[selectIconCategory]?.icons && (
+                                                        <section className="info-section">
+                                                        <div className="left-side">
+                                                            {Object.entries(iconGroupd[selectIconCategory].icons).map(
+                                                            ([name, Icon]) => (
+                                                                <button
+                                                                key={name}
+                                                                onClick={() => setSelectIcon(name)}
+                                                                className={`selectIcon ${
+                                                                    selectIcon === name ? "active" : ""
+                                                                }`}
+                                                                >
+                                                                <Icon size={24} strokeWidth={2} />
+                                                                </button>
+                                                            )
+                                                            )}
+                                                        </div>
+                                                        </section>
+                                                    )}
+                                                    </div>
                                                 </div>
-                                                <button
-                                                    className="save-btn"
-                                                    onClick={() => updateCategory(row.id)}
-                                                    >
-                                                    Save
-                                                    </button>    
                                             </div>
+                                            <button className="save-btn" onClick={() => updateCategory(row.id)} >
+                                                Save
+                                            </button>    
                                         </td>
                                     </tr>
                                 )}

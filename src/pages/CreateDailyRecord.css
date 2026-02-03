@@ -1,6 +1,7 @@
 /* From Uiverse.io by njesenberger */ 
 .toggle-container {
   --knob-size: 1.75em;
+  margin-top: 5%;
   display: flex;
   justify-content: center;
   position: relative;
@@ -29,7 +30,7 @@
 .toggle-handle-wrapper {
   position: absolute;
   z-index: 1;
-  bottom: -135%;
+  bottom: -100%;
   -webkit-mask-image: linear-gradient(to bottom, #000 62.125%, transparent 50%);
   mask-image: linear-gradient(to bottom, #000 62.125%, transparent 50%);
   width: 200%;

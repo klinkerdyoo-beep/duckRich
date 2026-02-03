@@ -13,22 +13,76 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     /* ใช้พื้นหลังเคลื่อนไหวเดิม */
-    background: linear-gradient(-45deg, #74a0f8, #FEFFB1, #74a0f8, #a9c6ff);
-    background-size: 300% 300%;
-    animation: waveGradient 30s ease-in-out infinite;
-}
-@keyframes waveGradient {
-  0% { background-position: 50% 0%; }
-  50% { background-position: 50% 100%; }
-  100% { background-position: 50% 0%; }
+    /* background: linear-gradient(-45deg, #74a0f8, #FEFFB1, #74a0f8, #a9c6ff); */
+    background-image: url(./assets/Desktop\ -\ 6.png);
+    /* background-size: 300% 300%; */
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    /* animation: waveGradient 30s ease-in-out infinite; */
 }
 
-/* .app-wrapper {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center; 
-  align-items: center;
-} */
+.train {
+  position: fixed;
+  bottom: 44.2%;
+  height: 50px;
+  animation: moveTrain 200s linear infinite;
+}
+
+.cloud1{
+    position: fixed;
+    top: 5%;
+     height: 200px;
+    animation: moveCloud 170s linear infinite;
+
+}
+
+.cloud2{
+    position: fixed;
+    top: 5%;
+    height: 200px;
+    animation: moveCloud2 200s linear infinite;
+}
+
+.vector{
+    position: fixed;
+    z-index: 1;
+}
+
+.g1{
+    position: fixed;
+    width: 700px;
+    bottom: 5%;
+    left: 30%;
+    /* z-index: 1; */
+    animation: moveg1 4s linear infinite alternate;
+}
+
+@keyframes moveTrain {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100vw); }
+}
+
+@keyframes moveCloud {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100vw); }
+}
+
+@keyframes moveCloud2 {
+  from { transform: translateX(100vw); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes moveg1 {
+  from {
+    transform: translateX(10vw);
+  }
+  to {
+    transform: translateX(-20%);
+  }
+}
 
 /* เวลา sidebar ปิด */
 .content {
@@ -170,6 +224,7 @@ body.sidebar-open .content {
     align-items: start;  /* จัดให้หัวบนเสมอกัน จะสวยกว่า */
     justify-items: center;
     padding: 25px;
+    /* margin-top: 2%; */
 }
 
 .overview-grid{

@@ -26,7 +26,10 @@ const CreateDailyRecord = () => {
     const [categories, setCategories] = useState(1); // selected category id
     const [categoryList, setCategoryList] = useState([]); // list from server
     const [walletList, setWalletList] = useState([]);
-    const [date, setDate] = useState("");
+    const today = new Date().toLocaleDateString("en-CA", {
+    timeZone: "Asia/Bangkok",
+    });
+    const [date, setDate] = useState(today);
     const [note, setNote] = useState("");
     const [amount, setAmount] = useState("");
     const [walletId, setWalletId] = useState(null);

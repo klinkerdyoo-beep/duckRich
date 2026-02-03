@@ -42,15 +42,6 @@ function HambergerBar({page, setPage}) {
                   <h2>Dashboard</h2>
                </button>
             </Link>
-             <Link to="/dailyRecord" onClick={() => setPage("DailyRecord")}>
-                  <button className={`b1 ${page === "DailyRecord" ? "active" : ""}`}
-                     onMouseEnter={() => setHover("n") }
-                     onMouseLeave={() => setHover(null)}>
-                        {/* {hover === "n" || page === "DailyRecord" ? <img src={IconN}/> : <img src={IconNBlack}/>} */}
-                        <Notebook size={28} strokeWidth={2} color={hover === "n" || page === "DailyRecord" ? "#ffffff" : "#000000"}/>
-                     <h2>Daily<br />Record</h2>
-                  </button>
-             </Link>
              <Link to="/createDailyRecord" onClick={() => setPage("CreateDailyRecord")}>
                <button className={`b1 ${page === "CreateDailyRecord" ? "active" : ""}`}
                   onMouseEnter={() => setHover("an") }

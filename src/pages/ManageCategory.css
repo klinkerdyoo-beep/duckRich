@@ -1,44 +1,43 @@
-
-/* .dtable{
+.dtable{
     background-color: #ffffff;
     border-radius: 20px;
-    height: auto ;
-    max-height: 550px;
-    overflow: auto;
-} */
-
-.category-table {
-    width: 100%; 
-    /* background-color: #ffffff; */
-    /* border-radius: 15px; */
-    border-spacing: 0 10px; /* **ช่องว่างแนวตั้ง 10px** ระหว่างแถว */
-    padding: 20px;
+    height: 400px;
+    padding: 0px 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.category-table th {
-    background-color: transparent; 
-    color: #999; /* สีเทาอ่อน */
-    font-weight: 500;
-    padding: 10px 10px; 
-    text-align: left; 
-    border: none; 
-    font-size: 0.8em;
+.category-table {
+  width: 100%;
+  margin: 5px;
 }
 
 .category-table tr {
-    font-size: 15px;
-    border: 2px; /* **ลบเส้นขอบเซลล์ออกทั้งหมด** */
-    padding: 10px 8px; 
-    text-align: left; 
-    color: #444;
+  color: inherit;
+}
+
+.category-table th {
+  position: sticky;
+  top: 0; 
+  color: #999; 
+  font-weight: 500;
+  text-align: left; 
+  border: none; 
+  font-size: 0.8em;
+  z-index: 10;
+  background-color: white;
 }
 
 .category-table td {    
-    padding: 12px 10px;
-    border: none;
-    border-bottom: 1px solid #ddd; /* เส้นใต้แต่ละบรรทัด */
-    font-size: 15px;
-    color: #444;
+  margin: 20px 0px;
+  border-bottom: 1px solid #ddd; 
+}
+
+.category-table tr {
+  font-size: 15px;
+  border: 2px; 
+  padding: 10px 8px; 
+  text-align: left; 
 }
 
 .category-table .but{
@@ -46,39 +45,41 @@
     gap: 10px;
 }
 
-/* คอลัมน์ที่ 1: Sl. Number (สั้นมาก) */
+/* Sl.Number */
 .category-table th:nth-child(1),
 .category-table td:nth-child(1) {
-    width: 5%; /* หรือ width: 60px; */
-    text-align: center;
+  width: 5%;
+  text-align: start;
 }
 
-/* คอลัมน์ที่ 3: Total (สั้น) */
+/* Date */
 .category-table th:nth-child(2),
 .category-table td:nth-child(2) {
-    width: 15%; /* หรือ width: 80px; */
-    text-align: center;
+  width: 15%;
+  text-align: start;
 }
 
-/* คอลัมน์ที่ 3: Total (สั้น) */
+/* Name */
 .category-table th:nth-child(3),
 .category-table td:nth-child(3) {
-    width: 10%; /* หรือ width: 80px; */
-    text-align: center;
+  width: 20%;
+  text-align: start;
 }
 
-/* คอลัมน์ที่ 3: Total (สั้น) */
+/* Description */
 .category-table th:nth-child(4),
 .category-table td:nth-child(4) {
-    width: auto; /* หรือ width: 80px; */
-    text-align: center;
+  width: 40%;
+  text-align: start;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
-/* คอลัมน์ที่ 4: Edit (สั้น) */
+/* Button */
 .category-table th:nth-child(5),
 .category-table td:nth-child(5) {
-    width: 12%; /* หรือ width: 100px; */
-    text-align: center;
+  width: 20%;
+  text-align: center;
 }
 
 .toggle-container {
@@ -137,22 +138,33 @@
   background: white;
   border-radius: 12px;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: 10px;
 
 }
 
 .edit-color{
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   flex-direction: column;
+  max-width: min-content;
   gap: 20px;
 }
 
+.edit-input{
+    max-width: min-content;
+
+}
+
+.hidden-box{
+  display: inline-flex;
+}
 /* From Uiverse.io by KSAplay */ 
 .card {
   display: flex;
   flex-direction: column;
+  text-align: start;
+  
   /* align-items: center; */
   height: 180px;
   width: 100%;
@@ -166,12 +178,8 @@
 /* ---------- Info section ---------- */
 
 .info-section {
-  /* position: relative; */
   display: flex;
   padding: 5px;
-  /* align-items: center; */
-  /* justify-content: space-between; */
-  /* width: 100%; */
   overflow-y: auto; 
   height: 75%;
     color: black;
@@ -182,12 +190,7 @@
   flex-wrap: wrap;
   padding: 10px;
   gap: 20px;
-  /* flex-direction: column; */
-  /* justify-content: space-around; */
-  /* height: 100%; */
-  /* width: 100%;  */
   z-index: 1;
-  /* padding-left: 18px; */
 }
 
 button {

@@ -27,6 +27,11 @@
 }
 
 .wallet-info {
-  text-align: center;
+  display: inline-block;
+  margin-left: 20%;
   margin-top: 8px;
+}
+
+.wallet-info h3{
+  font-weight: bold;
 }
